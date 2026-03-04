@@ -1,0 +1,639 @@
+/* CSS Custom Properties for consistent theming */
+:root {
+  --primary-color: #b294ff;
+  --primary-hover: #a080ff;
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --bg-primary: #0a0a0c;
+  --bg-secondary: #1a1a2e;
+  --bg-tertiary: #2d1b4e;
+  --bg-card: rgba(17, 24, 39, 0.8);
+  --bg-accent: #1e293b;
+  --border-color: rgba(178, 148, 255, 0.3);
+  --border-accent: rgba(255, 255, 255, 0.1);
+  --shadow-primary: rgba(178, 148, 255, 0.4);
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --border-radius: 8px;
+  --border-radius-large: 15px;
+  --spacing-xs: 5px;
+  --spacing-sm: 10px;
+  --spacing-md: 15px;
+  --spacing-lg: 20px;
+  --spacing-xl: 30px;
+  --spacing-2xl: 40px;
+  --spacing-3xl: 60px;
+}
+
+/* 1. Animated Graphic Background */
+.main-bg {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, var(--bg-primary), var(--bg-secondary), var(--bg-tertiary), #16213e);
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+  color: var(--text-secondary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  line-height: 1.6;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2. Centering the Layout */
+.container.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 3. Typography & Slogan */
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xs);
+  text-shadow: 0 0 20px var(--shadow-primary);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin: 0;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin: 0 0 var(--spacing-xs) 0;
+  font-weight: 600;
+}
+
+.slogan {
+  color: var(--primary-color);
+  font-style: italic;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  margin-bottom: var(--spacing-2xl);
+  opacity: 0.9;
+}
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--text-muted);
+}
+
+/* 4. Button Styling */
+.btn-group {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  font-weight: 600;
+  font-size: 1rem;
+  min-height: 44px; /* Accessibility: minimum touch target */
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  background: var(--primary-color);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(178, 148, 255, 0.3);
+  border-color: var(--primary-color);
+}
+
+button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(178, 148, 255, 0.2);
+}
+
+button:active {
+  transform: translateY(0);
+  transition-duration: var(--transition-fast);
+}
+
+/* Sub-button group styling */
+.sub-btn-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.sub-btn-group button {
+  font-size: 0.9rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  min-height: 40px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 5. Display Card */
+.display-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-large);
+  border: 1px solid var(--primary-color);
+  width: 100%;
+  max-width: 700px;
+  text-align: left;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.display-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary-color), transparent);
+}
+
+/* 6. Blueprint Box */
+.blueprint {
+  background: var(--bg-primary);
+  padding: var(--spacing-md);
+  border-left: 4px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-sm) 0;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Droid Sans Mono', 'Source Code Pro', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.blueprint p {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Role cards */
+.display-card > div:not(:first-child) {
+  margin-bottom: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background: var(--bg-accent);
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 7. Future Proof Section */
+.future-proof {
+  margin-top: var(--spacing-3xl);
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--border-accent);
+  width: 100%;
+  text-align: center;
+}
+
+.future-proof ul {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: var(--spacing-lg) 0 0 0;
+}
+
+.future-proof li {
+  margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--primary-color);
+  transition: transform var(--transition-fast);
+}
+
+.future-proof li:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.future-proof strong {
+  color: var(--primary-color);
+}
+
+/* Project list styling */
+.project-list p {
+  margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-list p:last-child {
+  border-bottom: none;
+}
+
+.project-list strong {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-bg {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+
+  .slogan {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
+
+  .btn-group {
+    gap: var(--spacing-sm);
+  }
+
+  button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.9rem;
+  }
+
+  .display-card {
+    padding: var(--spacing-lg);
+    margin: 0 var(--spacing-sm);
+    border-radius: var(--border-radius);
+  }
+
+  .sub-btn-group {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .sub-btn-group button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 0.85rem;
+  }
+
+  .blueprint {
+    padding: var(--spacing-sm);
+    font-size: 0.85rem;
+  }
+
+  .future-proof {
+    margin-top: var(--spacing-2xl);
+    padding: var(--spacing-md);
+  }
+
+  .future-proof li {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-bg {
+    padding: var(--spacing-md) var(--spacing-xs);
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 10vw, 2rem);
+    text-align: center;
+  }
+
+  .slogan {
+    font-size: clamp(0.8rem, 5vw, 1rem);
+    text-align: center;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+  }
+
+  button {
+    width: 100%;
+    max-width: 280px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+
+  .display-card {
+    padding: var(--spacing-md);
+    margin: 0;
+    border-radius: var(--border-radius);
+  }
+
+  .sub-btn-group {
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .sub-btn-group button {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .blueprint {
+    padding: var(--spacing-xs);
+    font-size: 0.8rem;
+    margin: var(--spacing-xs) 0;
+  }
+
+  .future-proof {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-sm);
+  }
+
+  .future-proof ul {
+    text-align: center;
+  }
+
+  .future-proof li {
+    padding: var(--spacing-xs);
+    font-size: 0.85rem;
+    text-align: left;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+  .container.centered {
+    max-width: 1000px;
+  }
+
+  .display-card {
+    padding: var(--spacing-2xl);
+  }
+
+  .btn-group {
+    gap: var(--spacing-lg);
+  }
+
+  button {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .main-bg {
+    background: white !important;
+    color: black !important;
+    animation: none !important;
+  }
+
+  button {
+    background: white !important;
+    border: 1px solid black !important;
+    color: black !important;
+  }
+
+  .display-card {
+    background: white !important;
+    border: 1px solid black !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --border-color: rgba(255, 255, 255, 0.8);
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --text-secondary: #000000;
+    --text-muted: #333333;
+  }
+
+  button {
+    border-width: 2px;
+    border-color: var(--primary-color);
+  }
+
+  .display-card {
+    border-width: 2px;
+    border-color: var(--primary-color);
+  }
+
+  .blueprint {
+    border-left-width: 6px;
+  }
+
+  .future-proof li {
+    border-left-width: 5px;
+  }
+}
+
+/* Dark mode support (for systems that support it) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #e9ecef;
+    --bg-tertiary: #dee2e6;
+    --text-primary: #212529;
+    --text-secondary: #495057;
+    --text-muted: #6c757d;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-accent: #f8f9fa;
+  }
+}
+
+/* Focus visible for better keyboard navigation */
+button:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Skip link for screen readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: #000;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Role / project card — refined, high-end visual style */
+.role-card {
+  position: relative;
+  background-color: rgba(18, 20, 25, 0.64);
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 8px 30px rgba(4, 6, 15, 0.55), inset 0 1px 0 rgba(255,255,255,0.02);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.36s cubic-bezier(0.2,0.9,0.2,1), box-shadow 0.36s ease, border-color 0.36s ease;
+  color: #e6e9ef;
+  cursor: pointer;
+  overflow: hidden;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.role-card::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -30%;
+  width: 160%;
+  height: 60%;
+  background: radial-gradient(600px 120px at 10% 10%, rgba(178,148,255,0.06), transparent 20%),
+              linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0));
+  pointer-events: none;
+  transform: rotate(-6deg);
+  mix-blend-mode: overlay;
+}
+
+.role-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(178,148,255,0.14);
+  box-shadow: 0 22px 50px rgba(4, 6, 15, 0.6), 0 2px 10px rgba(178,148,255,0.04);
+}
+
+.role-card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(178,148,255,0.12);
+  border-color: rgba(178,148,255,0.18);
+}
+
+/* Title and supporting text */
+.role-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px 0;
+}
+
+.role-subtitle {
+  color: rgba(230,230,250,0.85);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.role-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.role-meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Accent tag */
+.tier-tag {
+  background: linear-gradient(90deg, rgba(178,148,255,0.08), rgba(230,230,250,0.02));
+  color: #eef0ff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  border: 1px solid rgba(178,148,255,0.12);
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+
+/* Small, elegant separator used inside the card */
+.role-separator {
+  width: 1px;
+  height: 18px;
+  background: rgba(255,255,255,0.03);
+  margin: 0 6px;
+  border-radius: 2px;
+}
+body {
+  background: linear-gradient(270deg, #00f0ff, #ff00ff);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
