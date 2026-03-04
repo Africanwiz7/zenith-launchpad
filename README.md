@@ -32,4 +32,4 @@ This project demonstrates proficiency in multi-language development and database
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-username/zenith-launchpad.git](https://github.com/africanwiz7/zenith-launchpad.git)
+   git clone [https://github.com/africanwiz7/zenith-launchpad.git](https://github.com/africanwiz7/zenith-launchpad.git)
